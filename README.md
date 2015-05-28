@@ -1,7 +1,7 @@
 hello-docker-compose
 ====================
 
-View `Makefile` and try it.
+See `Makefile` and try it.
 
 ## Requirements
 
