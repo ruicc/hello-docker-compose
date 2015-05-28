@@ -1,0 +1,14 @@
+web:
+    build: ./web
+    command: php -S 0.0.0.0:5000 app.php
+    ports:
+        - "5000:5000"
+    volumes:
+        - ./web:/code
+    links:
+        - database
+database:
+    build: ./database
+    command: php -S 0.0.0.0:5000 database.php
+    volumes:
+        - ./database:/code
