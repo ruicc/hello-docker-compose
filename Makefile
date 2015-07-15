@@ -29,3 +29,9 @@ status:
 halt:
 	docker-compose stop
 	boot2docker stop
+
+DATABASE_NAME = $(shell echo "$$(basename $$(pwd))_mysql_1")
+
+mysql-repl:
+	docker run -it --link $(DATABASE_NAME):mysql --rm mysql \
+		sh -c 'exec mysql -h"$$MYSQL_PORT_3306_TCP_ADDR" -P"$$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'

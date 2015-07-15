@@ -1,14 +1,21 @@
 web:
     build: ./web
-    command: php -S 0.0.0.0:5000 app.php
+#    command: php -S 0.0.0.0:5000 app.php
     ports:
-        - "5000:5000"
+        - "5000:80"
     volumes:
-        - ./web:/code
+        - ./web:/var/www/html
     links:
-        - database
-database:
-    build: ./database
-    command: php -S 0.0.0.0:5000 database.php
-    volumes:
-        - ./database:/code
+        - mysql
+mysql:
+    build: ./mysql
+    ports:
+        - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: my-secret-pw
+        MYSQL_DATABASE: gaw-db
+        MYSQL_USER: gaw-user
+        MYSQL_PASSWORD: gaw-pass
+#    volumes:
+#        - ./mysql/data:/var/lib/mysql
+#    command: php -S 0.0.0.0:5000 database.php
