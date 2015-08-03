@@ -29,3 +29,6 @@ status:
 halt:
 	docker-compose stop
 	boot2docker stop
+
+mysql-repl:
+	mysql -h$(shell boot2docker ip) -udev-user -pdev-pw dev-db

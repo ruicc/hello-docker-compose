@@ -4,11 +4,17 @@ web:
     ports:
         - "5000:5000"
     volumes:
-        - ./web:/code
+        - ./web:/var/www/html
     links:
-        - database
-database:
-    build: ./database
-    command: php -S 0.0.0.0:5000 database.php
+        - datamysql
+datamysql:
+    image: mysql:5.6
     volumes:
-        - ./database:/code
+        - /tmp/data/mysql:/var/lib/mysql
+    ports:
+        - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: admin-password
+        MYSQL_DATABASE: dev-db
+        MYSQL_USER: dev-user
+        MYSQL_PASSWORD: dev-pw

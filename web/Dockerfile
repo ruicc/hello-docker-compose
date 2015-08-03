@@ -1,4 +1,5 @@
-FROM php:5.6-cli
-COPY . /code
-WORKDIR /code
-CMD ["php" "-S" "0.0.0.0:5000" "app.php"]
+FROM php:5.6-apache
+#COPY . /code
+#WORKDIR /code
+
+RUN docker-php-ext-install pdo pdo_mysql
