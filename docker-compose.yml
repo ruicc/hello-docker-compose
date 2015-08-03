@@ -1,8 +1,8 @@
 web:
     build: ./web
-    command: php -S 0.0.0.0:5000 app.php
+#    command: php -S 0.0.0.0:5000 app.php
     ports:
-        - "5000:5000"
+        - "5000:80"
     volumes:
         - ./web:/var/www/html
     links:

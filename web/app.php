@@ -1,5 +1,5 @@
 <?php
-echo '<h1>Link test</h1>';
+echo '<h1>MySQL Container Testing</h1>';
 
 //phpinfo();
 
@@ -21,9 +21,9 @@ $pdo->query('CREATE TABLE `persons` (
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8');
 
 $pdo->query('insert into persons (name, age) values ("Alice", 24), ("Bob", 19), ("Charles", 36)');
-
-echo '<pre>';
 foreach ($pdo->query('select * from persons') as $person) {
     echo $person['name'], ',', $person['age'], PHP_EOL;
 }
 echo '</pre>';
+
+$pdo->query('drop table if exists persons;');

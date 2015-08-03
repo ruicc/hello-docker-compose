@@ -1,5 +1,5 @@
-hello-docker-compose
-====================
+docker-devenv
+=============
 
 See `Makefile` and try it.
 
