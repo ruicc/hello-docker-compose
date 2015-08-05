@@ -17,10 +17,10 @@ datamysql:
         MYSQL_DATABASE: dev-db
         MYSQL_USER: dev-user
         MYSQL_PASSWORD: dev-pw
-#haskell:
-#    build: ./haskell
-#    ports:
-#        - "5001:3000"
-#    volumes:
-#        - ./haskell:/srv/www/html
-#    command: stack setup 7.8.4 && stack build && stack exec scotty
+haskell:
+    build: ./haskell
+    ports:
+        - "5001:3000"
+    volumes:
+        - ./haskell:/code
+    command: make run-in-docker
