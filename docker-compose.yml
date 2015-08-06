@@ -34,3 +34,9 @@ haskell:
     volumes:
         - ./haskell:/code
     command: make run-in-docker
+nginx:
+    build: ./nginx
+    ports:
+        - "5003:80"
+    links:
+        - web:backend-host
