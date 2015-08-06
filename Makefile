@@ -30,6 +30,9 @@ halt:
 	docker-compose stop
 	boot2docker stop
 
+hello:
+	curl -v $(shell boot2docker ip):5000
+
 mysql-repl:
 	mysql -h$(shell boot2docker ip) -udev-user -pdev-pw dev-db
 

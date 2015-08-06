@@ -1,7 +1,17 @@
+varnish:
+    build: ./varnish
+    ports:
+        - "5000:80"
+    links:
+        - web:backend-host
+    environment:
+        VCL_CONFIG: /etc/varnish/default.vcl
+        CACHE_SIZE: 64m
+        VARNISHD_PARAMS: -p default_ttl=3600 -p default_grace=3600
 web:
     build: ./web
     ports:
-        - "5000:80"
+        - "5001:80"
     volumes:
         - ./web/laravel:/srv/www/code
     links:
@@ -20,7 +30,7 @@ datamysql:
 haskell:
     build: ./haskell
     ports:
-        - "5001:3000"
+        - "5002:3000"
     volumes:
         - ./haskell:/code
     command: make run-in-docker
